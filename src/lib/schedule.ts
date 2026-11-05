@@ -25,8 +25,8 @@ export function overlaps(a: Interval, b: Interval): boolean {
  * convertido para o seu relógio.
  */
 export function toLocalDate(date: string, time: string): Date {
-  const [y, m, d] = date.split("-").map(Number);
-  const [hh, mm] = time.split(":").map(Number);
+  const [y = NaN, m = NaN, d = NaN] = date.split("-").map(Number);
+  const [hh = NaN, mm = NaN] = time.split(":").map(Number);
   return new Date(y, m - 1, d, hh, mm, 0, 0);
 }
 

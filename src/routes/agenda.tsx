@@ -126,7 +126,10 @@ function AgendaPage() {
   async function simulateRace() {
     const { start, row } = buildRow();
     const invalid = validateAppointment({ clientName: form.clientName || "Teste", start, durationMin: form.duration });
-    if (invalid) return toast.error(invalid);
+    if (invalid) {
+      toast.error(invalid);
+      return;
+    }
     const r = { ...row, client_name: row.client_name || "Teste concorrência" };
     const results = await Promise.all([
       supabase.from("appointments").insert({ ...r, client_name: r.client_name + " (A)" }),
